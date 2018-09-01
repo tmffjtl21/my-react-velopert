@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import ContactInfo from './ContactInfo'
+
 
 class Contact extends Component {
 
     constructor(props){
         super(props);
         this.state = {
+            keyword: '',
             contactData: [
                 {name:'Abet', phone:'010-0000-0001'},
                 {name:'Bbet', phone:'010-0000-0002'},
@@ -12,6 +15,13 @@ class Contact extends Component {
                 {name:'Dbet', phone:'010-0000-0004'}
             ]
         }
+        console.log('a')
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            keyword: e.target.value
+        })
     }
 
     render() {
@@ -24,20 +34,19 @@ class Contact extends Component {
 
         return (
             <div>
+                <h1>Contacts</h1>
+                <input
+                    name="keyword"
+                    placeholder="Search"
+                    value={this.state.keyword}
+                    onChange={this.handleChange}
+                />
+
                 {/* render 내에서 함수를 사용  */}
                 {mapToCompenent(this.state.contactData)}
             </div>
         );
     }
-}
-
-class ContactInfo extends Component {
-    render(){
-        return(
-            <div>{this.props.contact.name} {this.props.contact.phone}</div>
-        )
-    }
-
 }
 
 export default Contact;
