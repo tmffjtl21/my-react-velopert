@@ -11,28 +11,6 @@ class ContactCreate extends Component {
         }
     }
 
-    componentWillMount(){
-        console.log("componentWillMount")
-
-        const contactData = localStorage.contactData;
-
-        if(contactData) {
-            this.setState({
-                contactData: JSON.parse(contactData)
-            })
-        }
-    }
-
-    componentDidUpdate(prevProps, prevState){
-        if(JSON.stringify(prevState.contactData) !== JSON.stringify(this.state.contactData)){
-            localStorage.contactData = JSON.stringify(this.state.contactData)
-
-            console.log("componentDidUpdate success")
-        }
-
-        console.log("componentDidUpdate")
-    }
-
     handleChange = (e) => {
         let nextState = {};
         // 여기서 이런 객체가 만들어짐
